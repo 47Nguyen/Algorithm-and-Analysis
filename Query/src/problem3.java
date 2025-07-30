@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public class Problem3 {
+public class problem3 {
     /**
      * You have two ADTs: Set and Sequence. The Set ADT supports the following operations: add, remove, and size (which returns the number of elements in a set).
      * The Sequence ADT supports the following operations: next (which returns the first, second, etc. elements in a sequence until the last one on each subsequent call;
@@ -40,13 +40,6 @@ public class Problem3 {
         return isPermuted;
     }
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4};
-        int[] b = {4, 3, 2, 2};
-        int[] c = {1, 2, 4};
-        int[] d = {1, 2, 3};
 
-        System.out.println(isPermutation(a, b)); // YES
-        System.out.println(isPermutation(a, a)); // YES
-        System.out.println(isPermutation(c, d)); // NO
     }
 }

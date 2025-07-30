@@ -1,22 +1,68 @@
 package P1;
 
-class Node {
-    int data;
-    Node next;
 
-    Node(int data) {
-        this.data = data;
-        next = null;
-    }
-}
 public class Problem1 {
-    Node head;
+    // Singly Linked List-based implementation of stack
+    static class Node<T> {
+        T data;
+        Node<T> next;
+        public Node(T data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+    static class LinkedListStack<T> {
+        // this class is used as a container of data
+        private int size;
+        private Node<T> head;
 
+
+        public LinkedListStack() {
+            size = 0;
+            head = null;
+        }
+        public int size() {
+            return size;
+        }
+        public boolean isEmpty() {
+            return size == 0;
+        }
+        public boolean push(T item) {
+// add a new node at the beginning
+            Node<T> node = new Node<T>(item);
+            if (!isEmpty()) {
+                node.next = head;
+            }
+            head = node;
+            size++;
+            return true;
+        }
+        public boolean pop() {
+// remove the first node
+// make sure the stack is not empty
+            if (isEmpty()) {
+                return false;
+            }
+// advance head
+            head = head.next;
+            size--;
+            return true;
+        }
+        public T peek() {
+// make sure the stack is not empty
+            if (isEmpty()) {
+                return null;
+            }
+            return head.data;
+        }
+    }
+
+    Node<Integer> head;
     public void removeLLLoop(){
         if (head == null || head.next == null)
             return;
-        Node slowPointer = head;
-        Node fastPointer = head;
+        Node<Integer> slowPointer = head;
+        Node<Integer> fastPointer = head;
 
         //Step 1 - We use Floyd's Algorithm to detect loop
         /**
@@ -28,7 +74,7 @@ public class Problem1 {
          */
         while (fastPointer != null && fastPointer.next != null) {
             slowPointer = slowPointer.next;
-            fastPointer = fastPointer.next;
+            fastPointer = fastPointer.next.next ;
 
             if (slowPointer == fastPointer){ //Condition to check if two pointers meet
                 break;
@@ -59,10 +105,37 @@ public class Problem1 {
             }
 
             //Remove loop
-            fastPointer = null;
+            fastPointer.next = null;
         }
     }
     public static void main(String[] args) {
+        Problem1 p = new Problem1();
 
+        // Create a loop manually: 1 → 2 → 3 → 4 → 5 → 3 ...
+        Node<Integer> n1 = new Node<>(1);
+        Node<Integer> n2 = new Node<>(2);
+        Node<Integer> n3 = new Node<>(3);
+        Node<Integer> n4 = new Node<>(4);
+        Node<Integer> n5 = new Node<>(5);
+
+        p.head = n1;
+        n1.next = n2;
+        n2.next = n3;
+        n3.next = n4;
+        n4.next = n5;
+        n5.next = n3; // loop here
+
+        System.out.println("Loop created. Removing loop...");
+        p.removeLLLoop();
+
+        // Print the list to confirm loop is removed
+        Node<Integer> current = p.head;
+        int count = 0;
+        while (current != null && count < 10) { // limit to avoid infinite loop if error
+            System.out.print(current.data + " -> ");
+            current = current.next;
+            count++;
+        }
+        System.out.println("null");
     }
 }

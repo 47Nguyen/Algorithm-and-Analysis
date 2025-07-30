@@ -19,12 +19,12 @@ public class BSTChecker {
             if (!recursiveInTraversal(node.left)){
                 /*
                 Traverse left sub-tree because, it an in order traversal.
-                Meaning of if loop here means, if left-sub tree is not a BST return false
+                Meaning of if loop here means, if left-sub tree is not a BSTree return false
                  */
                 return false;
             }
 
-            //Check BST property
+            //Check BSTree property
             if(previousNode != null && node.data <= previousNode){
                 /*
                 For in-order traversal. The value of current node, must be greater than value of previous node.

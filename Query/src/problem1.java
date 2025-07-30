@@ -1,4 +1,4 @@
-public class Problem1 {
+public class problem1 {
     /**
      *
      Problem 1
@@ -17,6 +17,18 @@ public class Problem1 {
             }
         }
         return max;
+        /**
+         *         int max = A[0];  O (1)
+         *         for (int i = 1; i < A.length; i++){ O(N)
+         *             if (A[i] > max){ O (1)
+         *                 max = A[i]; O (1)
+         *             }
+         *         }
+         *         return max; O(1)
+         *
+         *         => O(1) + O(1) + O(1) + O(1) + O(N)
+         *         => Big-o notation = O(N)
+         */
     }
 
     /**
@@ -38,6 +50,18 @@ public class Problem1 {
             }
         }
         return secondMax;
+        /**
+         *  int firstMax = findMax(A); O(1)
+         *  int secondMax = A[1]; O(1)
+         *  for (int i = 0; i < A.length; i++){ O(N)
+         *      if (A[i] !=firstMax){ O(1)
+         *          if (secondMax == 0 || A[i] > secondMax){ O(1)
+         *              secondMax = A[i]; O(1)
+         *          }
+         *      }
+         *  }
+         *  return secondMax; (1)
+         */
     }
 
     public static void main(String[] args) {

@@ -10,6 +10,7 @@ public class Problem2 {
          */
         Arrays.sort(arr); // Sort the array of transcending
 
+
         System.out.println(arr[0]);
         for (int i = 1 ;i < arr.length; i++){
             /**
@@ -21,6 +22,17 @@ public class Problem2 {
                 System.out.println(arr[i]);
             }
         }
+        /**
+         Arrays.sort(arr); O (n Log n)
+         System.out.println(arr[0]); O(1)
+         for (int i = 1 ;i < arr.length; i++){ O(N)
+             if (arr[i] != arr[i-1]){ O(N)
+                System.out.println(arr[i]); O(1)
+            }
+         }
+         Big - o: O(1) + O(1) + O(n Log(N)) + O(N)
+         */
+
     }
 
     public static void printUniqueWithoutSorting(int[] arr) {
@@ -39,7 +51,7 @@ public class Problem2 {
             boolean found = false;
 
             // Check if arr[i] is already in unique[]
-            for (int j = 0; j < i-1; j++) {
+            for (int j = 0; j < size; j++) {
                 if (arr[i] == unique[j]) {
                     found = true;
                     break;

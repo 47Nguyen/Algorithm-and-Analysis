@@ -1,4 +1,4 @@
-public class Problem4 {
+public class problem4 {
     public static int findAreaMatrix(int[][] matrix, int topRow,int leftCol, int bottomRow, int rightCol){
         int area = 0;
         for (int i = topRow; i <= bottomRow;i++){

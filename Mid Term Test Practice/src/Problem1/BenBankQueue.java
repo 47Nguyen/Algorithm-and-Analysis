@@ -1,146 +1,80 @@
 package Problem1;
 
-import java.util.ArrayList;
-import java.util.List;
+public class BenBankQueue {
+    private int size;
+    private Customer[] customerList;
+    private boolean[] unhappyCustomer;
+    private static int capacity = 1000;
 
-class Customer {
-    int id;
-    String name;
-    int arrivalOrder;
-    String type;
-    boolean isUnhappy;
+    public BenBankQueue(){
+        this.size = 0;
+        this.customerList = new Customer[capacity];
+        this.unhappyCustomer = new boolean[capacity];
 
-    public Customer(int id, String name, String type) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.isUnhappy = false;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                '}';
-    }
-}
-
-class BenBankQueue {
-    /**
-     Queue is FIFO - First in First Out
-     */
-    private final List<Customer> queue;
-    private int arrivalCounter;
-    private int unhappyCount;
-
-    public BenBankQueue() {
-        queue = new ArrayList<>();
-        arrivalCounter = 0;
-        unhappyCount = 0;
-    }
-
-    private int getPrio(String type){
-        switch (type){
-            case "Diamond": return 3;
-            case "Gold": return 2;
-            case "Silver": return 1;
-            default: return 0;
+    static class Customer{
+        int id;
+        String name;
+        String type;
+        public Customer(int id, String name, String type){
+            this.id = id;
+            this.name = name;
+            this.type = type;
         }
-    }
 
-    //  enQueue complexity = O(N)
-    public int enQueue(Customer customer){
-        customer.arrivalOrder = arrivalCounter++;
-        int customerPriority = getPrio(customer.type);
-        int insertIndex = queue.size();
-
-        for (int i = 0; i < queue.size();i++){
-            int existingPriority = getPrio(queue.get(i).type);
-                if (customerPriority > existingPriority){
-                    insertIndex = i; // Position is also base on its index
-                    break;
-                }
+        public int getTypeValue(){
+            if (type.equals("Diamond")){
+                return 3;
+            } else if (type.equals("Gold")) {
+                return 2;
             }
-
-        //Add new customer into tbe queue
-        queue.add(insertIndex, customer);
-
-
-        //Do a loop to check if any customer is unhappy
-        for (int i = insertIndex + 1 ; i < queue.size();i++){
-            Customer customerInQueue = queue.get(i);
-            if (!customerInQueue.isUnhappy && customerInQueue.arrivalOrder < customer.arrivalOrder &&
-                    getPrio(customer.type) > getPrio(customerInQueue.type)){
-                customerInQueue.isUnhappy = true;
-                unhappyCount++;
+            else {
+                return 1;
             }
         }
-        /**
-         * Add customer to its corresponding index/queue position
-         */
-        return insertIndex;
+
+        public boolean higherPriority(Customer customer2){
+            return getTypeValue() > customer2.getTypeValue(); //Compare value between the two types
+        }
     }
 
-    // deQueue complexity = O(1) - Return customer that will be serve (accessing element in array)
-    public Customer deQueue(){
-        Customer served = queue.removeFirst(); //Only one customer at a time, always serve the customer in front
-        if (queue.isEmpty()){
-            return null;
+    private int enQueue(Customer customer){
+        int position = size;
+        while (position > 0 && customer.higherPriority(customerList[position-1])){
+            customerList[position] = customerList[position-1];
+            unhappyCustomer[position] = true;
+            unhappyCustomer[position-1] =false;
+            position--;
         }
-
-        if (served.isUnhappy){
-            unhappyCount--;
-        }
-        /**
-         * If the served customer that Bank finish serving was unhappy, then we remove unhappy counter
-         */
-        return served; // Return the served customer
+        customerList[position] = customer;
+        size++;
+        return position;
     }
 
-    public int getCountUnHappy(){
-        return unhappyCount;
+    private int countUnhappy(){
+        int unhappy = 0;
+        for (int i= 0 ; i < unhappyCustomer.length;i++){
+            if (unhappyCustomer[i]){
+                unhappy++;
+            }
+        }
+        return unhappy;
     }
 
     public static void main(String[] args) {
         BenBankQueue bankQueue = new BenBankQueue();
-        Customer c1 = new Customer(123,"Joh","Diamond");
-        Customer c2 = new Customer(456,"Josh","Gold");
-        Customer c3 = new Customer(789,"Jay","Silver");
-
-        System.out.println(bankQueue.enQueue(c2));
-        System.out.println(bankQueue.enQueue(c3));
-        System.out.println(bankQueue.enQueue(c1));
-
-        System.out.println(bankQueue.deQueue());
-
-        System.out.println("Unhappy Customer: "+bankQueue.getCountUnHappy());
-
+        System.out.printf("\nAlice (Gold) position: %d", bankQueue.enQueue(new
+                Customer(123, "Alice", "Gold")));
+        System.out.printf("\nNumber of unhappy: %d", bankQueue.countUnhappy());
+        System.out.printf("\nBob (Silver) position: %d", bankQueue.enQueue(new
+                Customer(456, "Bob", "Silver"))); // 1 (Bob is positioned after Alice)
+        System.out.printf("\nNumber of unhappy: %d", bankQueue.countUnhappy()); // 0 (no
+        System.out.printf("\nCarol (Diamond) position: %d", bankQueue.enQueue(new
+                Customer(789, "Carol", "Diamond"))); // 0 (Carol has the highest priority)
+        System.out.printf("\nNumber of unhappy: %d", bankQueue.countUnhappy()); // 2
+        System.out.printf("\nDavid (Gold) position: %d", bankQueue.enQueue(new
+                Customer(111, "David", "Gold"))); // 2 (David bypasses Bob)
+        System.out.printf("\nNumber of unhappy: %d", bankQueue.countUnhappy()); // 2 (Bob
+        
     }
-
 }

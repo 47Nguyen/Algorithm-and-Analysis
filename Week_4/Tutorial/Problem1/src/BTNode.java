@@ -1,7 +1,7 @@
 class BTNode {
     int data;
-    BTNodeLecture left;
-    BTNodeLecture right;
+    BTNode left;
+    BTNode right;
 
     public BTNode(int data) {
         this.data = data;

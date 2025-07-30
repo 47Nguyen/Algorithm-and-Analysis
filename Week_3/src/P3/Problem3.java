@@ -25,11 +25,6 @@ public class Problem3 {
             if (arrival[i] >= current_time){
                 waiting_time[i] = 0;
                 start_time = arrival[i];
-                waiting_time[i] = 0;
-                /*
-                This top line is needed, because for customer that's not waiting we need to update
-                the current time.
-                 */
             }
             else {
                 start_time = current_time;

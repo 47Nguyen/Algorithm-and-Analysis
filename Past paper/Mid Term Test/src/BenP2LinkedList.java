@@ -1,18 +1,21 @@
-class Node{
-    int data;
-    Node head;
-    Node next;
-    public Node(int data){
-        this.data = data;
-        this.head = this.next = null;
-    }
-}
 
 public class BenP2LinkedList {
+    public static class Node{
+        int data;
+        Node head;
+        Node next;
+        public Node(int data){
+            this.data = data;
+            this.head = this.next = null;
+        }
+    }
+
     Node headRes;
     public BenP2LinkedList(){
         this.headRes = null;
     }
+
+    // Time Complexity is O(N), because we are just traversing the list one by one.
     void mergeList(Node head1, Node head2){
         Node dummy = new Node(0);
         Node current = dummy;
@@ -40,6 +43,15 @@ public class BenP2LinkedList {
         headRes = dummy.next;
     }
 
+    // Time Complexity O(1)
+    int maxProduct(){
+        if (headRes == null || headRes.next == null){
+            return 0;
+        }
+        return headRes.data * headRes.next.data;
+    }
+
+    // Print the List of the Linked List - Time Complexity O(N)
     public void printList(Node head){
         while (head != null){
             System.out.print(head.data);
@@ -70,5 +82,8 @@ public class BenP2LinkedList {
 
         System.out.print("Merged List: ");
         list.printList(list.headRes);
+
+        int maxProd = list.maxProduct();
+        System.out.println("Maximum product of any two nodes: " + maxProd);
     }
 }

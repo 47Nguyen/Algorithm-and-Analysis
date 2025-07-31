@@ -15,19 +15,23 @@ public class GenerateIntegers {
 
     }
 
+    //Time Complexity O (n log n)
     static void sortValues(){
         //Sort array
         Arrays.sort(randomNumbers);
     }
+
+    //Time Complexity O(n)
     static void countingSort(){
         int maxValue = 0;
-        int[] count = new int[maxValue + 1];
 
         //Find max value
         for (int i = 0; i < randomNumbers.length; i++)
             if (randomNumbers[i] > maxValue){
                 maxValue = randomNumbers[i];
             }
+
+        int[] count = new int[maxValue + 1];
 
         //Count the occurences of each unique values
         for (int num : randomNumbers){
@@ -45,7 +49,7 @@ public class GenerateIntegers {
 
     public static void main(String[] args) {
         generateValues();
-//        sortValues();
+        sortValues();
         countingSort();
     }
 }

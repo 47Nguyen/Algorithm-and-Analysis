@@ -3,9 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Mid Term Test Practice/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Query/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Mid Term Test/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Algorithm and Analysis Design/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Linear-Structure/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Lecturer/src" isTestSource="false" />
@@ -14,6 +12,9 @@
       <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/Problem3/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/Problem4/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Past paper/Mid Term Test Practice/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Past paper/Mid Term Test/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Time and Space Trade-offs/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

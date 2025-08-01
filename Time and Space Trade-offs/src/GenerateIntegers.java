@@ -4,6 +4,7 @@ import java.util.Random;
 public class GenerateIntegers {
     static int[] randomNumbers;
 
+
     static void generateValues(){
         randomNumbers = new int[1000000]; // Change 20 to your desired number of integers
         Random rand = new Random();
@@ -14,6 +15,24 @@ public class GenerateIntegers {
         }
 
     }
+    static int[] generates(int size, int max){
+        int[] res = new int[size];
+        for (int i = 0; i < size;i++){
+            res[i] = (int) (Math.random() * max) +1;
+        }
+        return res;
+    }
+    static void generateValues10Mil(){
+        randomNumbers = new int[100000]; // Change 20 to your desired number of integers
+        Random rand = new Random();
+
+        // Generate random integers between 1 and 1000
+        for (int i = 0; i < randomNumbers.length; i++) {
+            randomNumbers[i] = rand.nextInt(10^9) + 1;
+        }
+
+    }
+
 
     //Time Complexity O (n log n)
     static void sortValues(){
@@ -21,35 +40,46 @@ public class GenerateIntegers {
         Arrays.sort(randomNumbers);
     }
 
-    //Time Complexity O(n)
-    static void countingSort(){
-        int maxValue = 0;
+    //Time Complexity O(n+K)
+    static int[] countingSort(int[] arr, int maxValue) {
+        int[] freq = new int[maxValue + 1];  // Fix: size should be maxValue + 1
+        int[] res = new int[arr.length];
 
-        //Find max value
-        for (int i = 0; i < randomNumbers.length; i++)
-            if (randomNumbers[i] > maxValue){
-                maxValue = randomNumbers[i];
-            }
-
-        int[] count = new int[maxValue + 1];
-
-        //Count the occurences of each unique values
-        for (int num : randomNumbers){
-            count[num]++;
+        // Step 1: Count frequencies
+        for (int i = 0; i < arr.length; i++) {
+            freq[arr[i]]++;
         }
 
-        int index = 0;
-        for (int i =0 ; i<= maxValue;i++){
-            while (count[i] --> 0){
-                randomNumbers[index++] = i;
-            }
+        // Step 2: Cumulative frequency
+        for (int i = 1; i <= maxValue; i++) {
+            freq[i] = freq[i] + freq[i - 1];
         }
 
+        // Step 3: Build output array (backwards for stability)
+        for (int i = arr.length - 1; i >= 0; i--) {
+            res[freq[arr[i]] - 1] = arr[i];
+            freq[arr[i]]--;
+        }
+
+        return res;
+    }
+    static void printArray(int[] arr){
+        for (int i =0; i < arr.length;i++){
+            System.out.print(arr[i] + " ");
+        }
     }
 
+    /*
+    Depending on the input size, countingSort
+     */
     public static void main(String[] args) {
-        generateValues();
-        sortValues();
-        countingSort();
+        int[] test = generates(10, 10);
+        System.out.println("Before sorting: ");
+        printArray(test);
+
+        System.out.println();
+        System.out.println("After sorting: ");
+        printArray(countingSort(test, 10));
+
     }
 }

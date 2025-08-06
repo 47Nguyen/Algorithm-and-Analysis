@@ -1,6 +1,4 @@
 package Problem1;
-
-
 public class ArrayQueue<T> {
     private int size;
     private int front, rear;

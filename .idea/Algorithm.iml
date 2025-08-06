@@ -15,6 +15,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Past paper/Mid Term Test Practice/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Past paper/Mid Term Test/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Time and Space Trade-offs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Brute Force/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

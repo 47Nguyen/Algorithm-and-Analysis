@@ -28,6 +28,11 @@ class BFS{
     public BFS(Graph graph, int start){
         visited = new boolean[graph.getAdjMatrix().length];
     }
+
+    void bfs(Graph graph, int startV){
+        ArrayList<Integer> newArr = new ArrayList<>(graph.getAdjMatrix().length);
+
+    }
 }
 
 class Vertex{

@@ -1,6 +1,33 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+//Source: https://www.codecademy.com/learn/graph-data-structures-java/modules/graphs-java/cheatsheet
 public class ConnectVertices {
+}
+
+class Graph{
+    int[][] adjMatrix; //2D arr
+    int vertex;
+    int edges;
+    public Graph(int v, int e){
+        this.vertex = v;
+        this.edges = e;
+    }
+
+    boolean addEdge(int v, int u){
+      return false;
+    }
+
+    public int[][] getAdjMatrix() {
+        return adjMatrix;
+    }
+}
+
+class BFS{
+    boolean[] visited;
+    public BFS(Graph graph, int start){
+        visited = new boolean[graph.getAdjMatrix().length];
+    }
 }
 
 class Vertex{
@@ -13,7 +40,10 @@ class Vertex{
 
     boolean insertEdge(Vertex endV, int weight){
         this.edges.add(new Edge(this, endV, weight));
+        return false;
     }
+
+
 }
 
 class Edge{
@@ -26,7 +56,4 @@ class Edge{
         this.weight = -1; //-1 = null
     }
 
-    //Helpers methods
-    boolean insertEdge(Vertex endV, int weight){
-    }
 }

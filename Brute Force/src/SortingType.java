@@ -11,6 +11,8 @@ public class SortingType {
 
     }
 
+
+    //Helper methods to print array
     void printArray(int[] arr){
         for (int i = 0; i < arr.length;i++){
             System.out.print(arr[i] + " ");
@@ -24,6 +26,7 @@ public class SortingType {
             swapped = false;
             for (int i =  0; i < arr.length-1;i++){
                 if (arr[i] > arr[i+1]){
+                    //Swap variables if the if condition is met
                     int temp = arr[i];
                     arr[i] = arr[i+1];
                     arr[i+1] = temp;
@@ -31,6 +34,7 @@ public class SortingType {
                 }
             }
         }
+
 
     }
     void selectionSort(int[] arr){

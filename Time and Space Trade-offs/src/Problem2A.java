@@ -127,7 +127,7 @@ class RMITLinkedList {
             while(curr.next != null)
                 curr = curr.next;
             curr.next = node;
-        }else{ // if empty, add new node at the head
+        }else{ // if empty, add new node at the headres
             head = node;
         }
         size++;
@@ -153,7 +153,7 @@ class RMITLinkedList {
         while (current != null) {
             if (current.data.studentId.equals(studentId)) {
                 if (current == head) {
-// remove head => need to update head
+// remove headres => need to update headres
                     head = head.next;
                     size--;
                     return true;

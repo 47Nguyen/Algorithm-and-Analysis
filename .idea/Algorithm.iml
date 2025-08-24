@@ -6,12 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/Query/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Algorithm and Analysis Design/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Linear-Structure/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Lecturer/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/Problem1/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/Problem2/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/Problem3/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/Problem4/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Non-Linear Structure/Tutorial/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Past paper/Mid Term Test Practice/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Past paper/Mid Term Test/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Time and Space Trade-offs/src" isTestSource="false" />
@@ -21,6 +15,15 @@
       <sourceFolder url="file://$MODULE_DIR$/Past paper/Queue/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Past paper/Stack/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ADT/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Past paper/Graph/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Past paper/HashMap/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Divide &amp; Conquer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Lecturer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/Problem1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/Problem2/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/Problem3/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/Problem4/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

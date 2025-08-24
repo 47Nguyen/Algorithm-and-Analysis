@@ -1,8 +1,5 @@
-import java.lang.foreign.StructLayout;
-
 public class StudentBST {
     StudentNode root;
-
 
     int addStudent(Student student){
         int level = 0;
@@ -13,65 +10,51 @@ public class StudentBST {
         StudentNode curr = root;
 
         while (true){
-            if (student.getGpa() > curr.data.getGpa()){
-                if (curr.right == null){
-                    curr.right = new StudentNode(student);
-                    return level+1;
-                }
-                curr = curr.right;
-                level++;
-            } else if(student.getGpa() < curr.data.getGpa()){
+            if (curr.data.getGpa() > student.getGpa()){
                 if (curr.left == null){
                     curr.left = new StudentNode(student);
-                    return level+1;
+                    level++;
+                    return level;
                 }
                 curr = curr.left;
-                level++;
-            } else {
-                return -1;
+            } else if (curr.data.getGpa() < student.getGpa()) {
+                if (curr.right == null){
+                    curr.right = new StudentNode(student);
+                    level++;
+                    return level;
+                }
+                curr = curr.right;
             }
         }
     }
 
     StudentNode nearestStudent(double gpa){
-        if (root == null){
-            return null;
-        }
+        StudentNode current = root;
+        StudentNode found = root;
 
-        StudentNode curr = root;
-        StudentNode foundNode = root;
-        double nearestDiff = Math.abs(root.data.getGpa() - gpa);
-        while(curr != null){
-
-            double currentDiff = Math.abs(curr.data.getGpa() - gpa);
+        double nearestDiff = Math.abs(root.data.getGpa() - gpa) ;
+        while(current != null){
+            double currentDiff = Math.abs(current.data.getGpa() - gpa);
 
             if (currentDiff < nearestDiff){
                 nearestDiff = currentDiff;
-                foundNode = curr;
+                found = current;
             }
 
-            //Traversing
-            if (gpa > curr.data.getGpa()){
-                curr = curr.right;
-
-            } else if(gpa < curr.data.getGpa()){
-                curr = curr.left;
-            } else {
-                return curr;
+            if (gpa < current.data.getGpa()){
+                current = current.left;
+            }
+            else if (gpa > current.data.getGpa()){
+                current = current.right;
+            }
+            else {
+                return current;
             }
         }
-        return foundNode;
+        return found;
 
     }
 
-    static class StudentNode{
-        Student data;
-        StudentNode right, left, root;
-        public StudentNode(Student node){
-            this.data = node;
-            right = left = root = null;
-        }
-    }
     static class Student{
         int id;
         String name;
@@ -87,6 +70,14 @@ public class StudentBST {
             return gpa;
         }
 
+        public int getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
         @Override
         public String toString() {
             return "Student{" +
@@ -94,6 +85,15 @@ public class StudentBST {
                     ", id=" + id +
                     ", name='" + name + '\'' +
                     '}';
+        }
+    }
+    static class StudentNode{
+        Student data;
+        StudentNode left, right;
+        StudentNode root;
+        public StudentNode(Student data ){
+            this.data = data;
+            left = right = root = null;
         }
     }
 }

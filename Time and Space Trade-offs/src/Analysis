@@ -1,6 +1,0 @@
-Sort Array using the sort method.
-- Sort Array has time complexity of O (N (log N)).
-
-Sort Array of using count sort.
-What is count sort?
--

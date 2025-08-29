@@ -24,6 +24,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/Problem3/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/Problem4/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Binary Tree/Tutorial/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Deduction &amp; Conquer/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
